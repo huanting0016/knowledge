@@ -9,5 +9,10 @@ package main
 
 func NumberOf1(n int) int {
 	// write code here
-
+	var count int
+	for n != 0 {
+		n = n & int(int32(n)-1)
+		count++
+	}
+	return count
 }
