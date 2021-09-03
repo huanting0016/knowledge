@@ -18,19 +18,19 @@ func spiralOrder(matrix [][]int) []int {
 	}
 
 	var res []int
-	l, t, r, b := 0, 0, len(matrix[0])-1, len(matrix)-1
+	l, h, r, t := 0, 0, len(matrix[0])-1, len(matrix)-1
 
 	for {
 		// 左-->右打印，打印完t++
 		for i := l; i <= r; i++ {
-			res = append(res, matrix[t][i])
+			res = append(res, matrix[h][i])
 		}
-		t++
-		if t > b {
+		h++
+		if h > t {
 			break
 		}
 		// 上-->下打印，打印完r--
-		for i := t; i <= b; i++ {
+		for i := h; i <= t; i++ {
 			res = append(res, matrix[i][r])
 		}
 		r--
@@ -39,14 +39,14 @@ func spiralOrder(matrix [][]int) []int {
 		}
 		// 右-->左打印，打印完b--
 		for i := r; i >= l; i-- {
-			res = append(res, matrix[b][i])
+			res = append(res, matrix[t][i])
 		}
-		b--
-		if t > b {
+		t--
+		if h > t {
 			break
 		}
 		// 下-->上打印
-		for i := b; i >= t; i-- {
+		for i := t; i >= h; i-- {
 			res = append(res, matrix[i][l])
 		}
 		l++
